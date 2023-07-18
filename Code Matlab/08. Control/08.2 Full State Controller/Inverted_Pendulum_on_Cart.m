@@ -68,8 +68,5 @@ sprintf('Video Captured')
 function dx = pendulum(x,m,M,L,g,d,u)
     D = m*L^2*(M+m*(1-cos(x(3))^2)); % Denominator
 
-    dx(1,1) = x(2);
-    dx(2,1) = 1/D*(-m^2*L^2*g*cos(x(3))*sin(x(3))+m*L^2*(m*L*x(4)^2*sin(x(3))-d*x(2)))+1/D*m*L^2*u;
-    dx(3,1) = x(4);
-    dx(4,1) = 1/D*((m+M)*m*g*L*sin(x(3))-m*L*cos(x(3))*(m*L*x(4)^2*sin(x(3))-d*x(2)))-1/D*m*L*cos(x(3))*u;
+    dx = [x(2);1/D*(-m^2*L^2*g*cos(x(3))*sin(x(3))+m*L^2*(m*L*x(4)^2*sin(x(3))-d*x(2)))+1/D*m*L^2*u;x(4); 1/D*((m+M)*m*g*L*sin(x(3))-m*L*cos(x(3))*(m*L*x(4)^2*sin(x(3))-d*x(2)))-1/D*m*L*cos(x(3))*u];
 end
